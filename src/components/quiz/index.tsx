@@ -113,7 +113,7 @@ const Quiz = () => {
                 <div style={{ width: `${step * 100 / (questions.length)}%` }} className="bg-orange transition-[width] duration-300 h-full"></div>
             </div>
             <div className={`fixed top-0 left-0 w-screen h-screen bg-black/30 transition-opacity duration-300 ${open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}>
-                <form action={"/"} onSubmit={sendResulte} className={`p-10 rounded bg-white w-full min-[510px]:max-w-[500px]  max-w-[95vw]  center  transition-all duration-300 ${open && showScore == false ? "opacity-100 -translate-y-1/2" : "opacity-0 translate-y-[50vh]"}`}>
+                <form action={"/"} onSubmit={sendResulte} className={` p-5 py-7 min-[510px]:p-10 rounded bg-white w-full min-[510px]:max-w-[500px]  max-w-[95vw]  center  transition-all duration-300 ${open && showScore == false ? "opacity-100 -translate-y-1/2" : "opacity-0 translate-y-[50vh]"}`}>
                     <button type="button" onClick={() => setOpen(false)} className="rounded-full border cursor-pointer size-8 absolute top-5 left-5 border-current grid place-content-center group"><svg className="group-hover:scale-150 transition-transform duration-300 group-active:scale-90" stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="32" d="M368 368 144 144m224 0L144 368"></path></svg></button>
                     <h4 className="text-center text-2xl font-medium mb-3">Assessment complete. </h4>
                     <p className="text-balance text-sm text-center text-gray-400">We just need a little more information so that we can send your results.</p>
@@ -124,7 +124,7 @@ const Quiz = () => {
                         See Resulte
                     </button>
                 </form>
-                <div className={`p-10 rounded bg-white w-full center min-[510px]:max-w-[500px] max-w-[95vw] transition-all duration-300 ${open && showScore == true ? "opacity-100 -translate-y-1/2" : "opacity-0 translate-y-[50vh]"}`}>
+                <div className={`p-5 py-7 min-[510px]:p-10 rounded bg-white w-full center min-[510px]:max-w-[500px] max-w-[95vw] transition-all duration-300 ${open && showScore == true ? "opacity-100 -translate-y-1/2" : "opacity-0 translate-y-[50vh]"}`}>
                     <div>
                         <h3 className={`text-4xl size-32 mx-auto grid place-content-center rounded-full ${score < questions.length / 4 ? "bg-red-50 text-red-600" : score < questions.length / 2 ? "bg-amber-100 text-amber-600" : "bg-green-50 rounded-full text-green-600"} font-merienda mb-10`}>{score}/{questions.length}</h3>
                         <p className="text-center text-balance text-xl ">{getMessage()}</p>

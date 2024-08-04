@@ -10,12 +10,12 @@ import { Resulte } from "@/utils/types"
 
 const Quiz = () => {
     const [resulte, setResulte] = useState<Resulte[]>(() => {
-        const storedResulets = localStorage.getItem("resulets");
+        const storedResulets = typeof window !== 'undefined' && localStorage.getItem("resulets");
         return storedResulets ? JSON.parse(storedResulets) : [];
     });
     const [step, setStep] = useState<number>(0)
     const [disable, setDisable] = useState(true)
-    const [open, setOpen] = useState(true)
+    const [open, setOpen] = useState(false)
     const [showScore, setShowScore] = useState(false)
     const [score, setScore] = useState(resulte.filter(obj => obj.correct).length)
 

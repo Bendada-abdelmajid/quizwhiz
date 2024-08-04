@@ -184,7 +184,7 @@ export async function POST(req: NextRequest) {
       `,
     };
 
-    const info=await transporter.sendMail(mailOption);
+    await transporter.sendMail(mailOption);
     return NextResponse.json(
       { message: "Message sent successfully" },
       { status: 200 }

@@ -20,7 +20,7 @@ const Quiz = () => {
     const [score, setScore] = useState(resulte.filter(obj => obj.correct).length)
 
     const hundelClick = () => {
-        console.log(resulte)
+        
         if (step < questions.length) {
             setStep(step + 1)
         } else {
@@ -67,7 +67,7 @@ const Quiz = () => {
                 body: JSON.stringify({ name, email, zipcode, resultes: resulte }),
             });
         } catch (error) {
-            console.log(error)
+            
 
         }
     }

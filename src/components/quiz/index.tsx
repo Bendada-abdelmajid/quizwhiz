@@ -119,7 +119,7 @@ const Quiz = () => {
                     <p className="text-balance text-sm text-center text-gray-400">We just need a little more information so that we can send your results.</p>
                     <input required name="name" className="block px-5 py-4 bg-light rounded-[30px] border mt-10 w-full" type="text" placeholder="Enter Your Full Name" />
                     <input required name="email" className="block px-5 py-4 bg-light rounded-[30px] border mt-5 w-full " type="email" placeholder="Enter Your Email" />
-                    <input required name="zipcode" className="block px-5 py-4 bg-light rounded-[30px] border mt-5 w-full " type="text" placeholder="Enter Your Email" />
+                    <input required name="zipcode" className="block px-5 py-4 bg-light rounded-[30px] border mt-5 w-full " type="text" placeholder="Enter Your Zip Code" />
                     <button type="submit" className="w-fit mt-8 mx-auto flex items-center gap-3  bg-orange-light hover:bg-orange/80 transition-colors rounded-[30px] text-xl px-10 py-3 ">
                         See Resulte
                     </button>

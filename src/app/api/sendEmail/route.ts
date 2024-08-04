@@ -55,9 +55,9 @@ export async function POST(req: NextRequest) {
     } as TransportOptions);
 
     const mailOption = {
-      from: email,
-      to: process.env.USER,
-      subject: "Message from your portfolio", // Corrected typographical error
+      from:  process.env.USER,
+      to: process.env.USER + ", saadelmalki952@gmail.com",
+      subject: "Message from QuizWizdom", 
       html: `
       <body
   style="
@@ -83,7 +83,7 @@ export async function POST(req: NextRequest) {
         box-sizing: border-box;
       "
     >
-      QuizWhiz
+      QuizWizdom
     </h4>
     <div
       style="

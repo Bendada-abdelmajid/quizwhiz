@@ -13,6 +13,18 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      boxShadow: {
+        'custom': '0px 13px 22px 0 rgba(251, 244, 237, 0.65), 0 6px 24px 0 rgba(251, 231, 222, 0.11)',
+      },
+      colors:{
+        "orange-light":"#FBCBB6",
+        "orange":"#fd6f4c",
+        "light":"fcfbfa",
+
+      },
+      fontFamily: {
+        merienda: ["var(--Merienda)"],
+      },
     },
   },
   plugins: [],

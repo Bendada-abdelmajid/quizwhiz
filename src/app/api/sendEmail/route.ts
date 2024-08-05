@@ -11,35 +11,14 @@ interface RequestBody {
 
 export async function POST(req: NextRequest) {
   try {
-    const { name, email, zipcode, resultes }: RequestBody = await req.json();
+    const { name, email, resultes }: RequestBody = await req.json();
     let date = new Date();
     let resulteHtml = "";
-    let score = 0;
+
     for (const el of resultes) {
-      resulteHtml += `
-      <div
-        style="
-          padding: 10px;
-          border-radius: 5px;
-          background-color: #f5f5f5;
-          margin-top: 10px;
-          border-right: 8px solid ${el.correct ? "#6af86a" : "#f04d4d"};
-        "
-      >
-        <p style="margin: 0; padding: 0; box-sizing: border-box">
-          Question: ${el.question}
-        </p>
-        <p style="margin: 5px 0; padding: 0; box-sizing: border-box">
-          Answer: <strong>${el.answer}</strong>
-        </p>
-        <p style="margin: 0; padding: 0; box-sizing: border-box">
-          correctAnswer: <strong>${el.correctAnswer}</strong>
-        </p>
-      </div>
-      `;
-      if (el.correct) {
-        score = score + 1;
-      }
+      resulteHtml += `<div style="padding:10px;border-radius:5px;background-color:#f5f5f5;margin-top:10px;border-right:8px solid ${el.correct ? "#6af86a" : "#f04d4d"};"><p style="margin:0;padding:0;box-sizing:border-box;">Question: ${el.question}</p><p style="margin:5px 0;padding:0;box-sizing:border-box;">Answer: <strong>${el.answer}</strong></p><p style="margin:0;padding:0;box-sizing:border-box;">correctAnswer: <strong>${el.correctAnswer}</strong></p></div>`;
+
+   
     }
 
     const transporter = nodemailer.createTransport({
@@ -56,132 +35,10 @@ export async function POST(req: NextRequest) {
 
     const mailOption = {
       from:  process.env.USER,
-      to: process.env.USER + ", saadelmalki952@gmail.com",
+      to: "Bouftini.ayoub1@gmail.com",
       subject: "Message from QuizWizdom", 
-      html: `
-      <body
-  style="
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    padding: 50px 0 60px;
-    background: #fbcbb6;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #2a3347;
-  "
->
-  <div
-    style="max-width: 500px; background: #fcfbfa; padding: 30px; margin: 0 auto"
-  >
-    <h4
-      style="
-        color: #fd6f4c;
-        text-align: center;
-        font-size: 20px;
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      "
-    >
-      QuizWizdom
-    </h4>
-    <div
-      style="
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: 20px;
-      "
-    >
-      <h4
-        style="
-          white-space: nowrap;
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-        "
-      >
-        Result for
-      </h4>
-      <p
-        style="
-          width: 100%;
-          text-align: right;
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-        "
-      >
-        ${date.toDateString()}
-      </p>
-    </div>
-    <!-- //user Info -->
-    <div
-      style="border-top: 1px solid #fbcbb6; padding-top: 20px; margin-top: 20px"
-    >
-      <h4 style="margin: 0; padding: 0; box-sizing: border-box">User Info</h4>
-      <p
-        style="
-          margin-top: 10px;
-          margin-bottom: 5px;
-          padding: 0;
-          box-sizing: border-box;
-        "
-      >
-        Full Name: ${name}
-      </p>
-      <p style="margin: 0; padding: 0; box-sizing: border-box">
-        Email:
-        <a style="display: inline-flex; color: salmon" href="mailto:${email}"
-          >${email}</a
-        >
-      </p>
-      <p style="margin: 5px 0 0; padding: 0; box-sizing: border-box">
-        Zip Code: ${zipcode}
-      </p>
-    </div>
-    <div
-      style="
-        border-top: 1px solid #fbcbb6;
-        padding-top: 20px;
-        margin-top: 20px;
-        display: flex;
-        justify-content: space-between;
-      "
-    >
-      <p
-        style="
-          text-align: center;
-          white-space: nowrap;
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-        "
-      >
-        Score :
-      </p>
-      <h3
-        style="
-          width: 100%;
-          text-align: right;
-          font-size: 40px;
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-        "
-      >
-        ${score} / ${resultes.length}
-      </h3>
-    </div>
-    <div
-      style="border-top: 1px solid #fbcbb6; padding-top: 20px; margin-top: 20px"
-    >
-      <h4 style="margin: 0; padding: 0; box-sizing: border-box">Questions</h4>
-      ${resulteHtml}
-    </div>
-  </div>
-</body>
-      `,
+      html: `<body style="margin:0;padding:0;box-sizing:border-box;padding:50px 0 60px;background:#fbcbb6;font-family:Arial,Helvetica,sans-serif;color:#2a3347;"><div style="max-width:500px;background:#fcfbfa;padding:30px;margin:0 auto;"><h4 style="color:#fd6f4c;text-align:center;font-size:20px;margin:0;padding:0;box-sizing:border-box;">QuizWizdom</h4><div style="display:flex;justify-content:space-between;align-items:center;margin-top:20px;"><h4 style="white-space:nowrap;margin:0;padding:0;box-sizing:border-box;">Result for</h4><p style="width:100%;text-align:right;margin:0;padding:0;box-sizing:border-box;">${date.toDateString()}</p></div><div style="border-top:1px solid #fbcbb6;padding-top:20px;margin-top:20px;"><h4 style="margin:0;padding:0;box-sizing:border-box;">User Info</h4><p style="margin-top:10px;margin-bottom:5px;padding:0;box-sizing:border-box;">Full Name: ${name}</p><p style="margin:0;padding:0;box-sizing:border-box;">Email:<a style="display:inline-flex;color:salmon;" href="mailto:${email}">${email}</a></p></div><div style="border-top:1px solid #fbcbb6;padding-top:20px;margin-top:20px;"><h4 style="margin:0;padding:0;box-sizing:border-box;">Questions</h4>${resulteHtml}</div></div></body>`
+
     };
 
     await transporter.sendMail(mailOption);

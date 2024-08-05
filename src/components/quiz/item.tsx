@@ -52,15 +52,15 @@ const Item = ({ el, setResulte, resulte, index }: Props) => {
             <div className='grid md:grid-cols-2 gap-5  items-center max-w-md md:max-w-3xl px-5 mx-auto'>
                 {el.options.map((option, i) => {
                     const active = resulte[index]?.answer === option;
-                    console.log(active)
+                
                     return (
 
                         <div
                             onClick={() => handleClick(option)}
-                            className={`${ resulte[index]?.answer === option? "border-orange" : "border-[#747a8a]"} flex w-full cursor-pointer gap-5 items-center border transition duration-200  py-4 pl-6 pr-7 rounded-[40px] hover:shadow-custom hover:bg-white `}
+                            className={`${ active? "border-orange" : "border-[#747a8a]"} flex w-full cursor-pointer gap-5 items-center border transition duration-200  py-4 pl-6 pr-7 rounded-[40px] hover:shadow-custom hover:bg-white `}
                             key={"Option" + i}
                         >
-                            <span className={`${resulte[index]?.answer === option ? "bg-orange border-orange" : "border-[#747a8a]"} size-3 grid place-content-center transition duration-200 rounded-full border font-medium`}></span>
+                            <span className={`${active ? "bg-orange border-orange" : "border-[#747a8a]"} size-3 grid place-content-center transition duration-200 rounded-full border font-medium`}></span>
                             <h4 className='sm:text-lg'>{option}</h4>
                           
                         </div>

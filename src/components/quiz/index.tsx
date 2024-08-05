@@ -9,13 +9,16 @@ import JSConfetti from 'js-confetti'
 
 
 const Quiz = () => {
-    const [resulte, setResulte] = useState<Resulte[]>(() => {
-        const storedResulets = typeof window !== 'undefined' && localStorage.getItem("resulets");
-        return storedResulets ? JSON.parse(storedResulets) : [];
-    });
+    const [resulte, setResulte] = useState<Resulte[]>([]);
+
     const [step, setStep] = useState<number>(0)
     const [disable, setDisable] = useState(false)
     const [open, setOpen] = useState(false)
+    useEffect(() => {
+        const storedResulets = typeof window !== 'undefined' && localStorage.getItem("resulets");
+        setResulte(storedResulets ? JSON.parse(storedResulets) : [])
+
+    }, [])
 
 
     const hundelClick = () => {
